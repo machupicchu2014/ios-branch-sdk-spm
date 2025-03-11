@@ -20,7 +20,12 @@
         }
         if (keyWindow && !keyWindow.isHidden && keyWindow.rootViewController) return keyWindow;
 
-        keyWindow = [UIApplicationClass sharedApplication].keyWindow;
+        for(UIWindow* window in [[UIApplicationClass sharedApplication] windows]) {
+            if(window.isKeyWindow) {
+                keyWindow = window;
+            }
+        }
+
         if (keyWindow && !keyWindow.isHidden && keyWindow.rootViewController) return keyWindow;
 
         for (keyWindow in [UIApplicationClass sharedApplication].windows.reverseObjectEnumerator) {

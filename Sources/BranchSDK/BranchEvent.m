@@ -400,7 +400,9 @@ BranchStandardEvent BranchStandardEventOptOut                 = @"OPT_OUT";
             buo.contentDescription = product.localizedDescription;
             buo.contentMetadata.quantity = 1;
             buo.contentMetadata.customMetadata =  (NSMutableDictionary*) @{
+#if TARGET_IS_IOS
                 @"content_version": product.contentVersion,
+#endif
                 @"is_downloadable": @(product.isDownloadable),
             };
             
